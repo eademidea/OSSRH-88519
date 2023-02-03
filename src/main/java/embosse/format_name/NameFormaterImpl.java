@@ -18,20 +18,25 @@ public class NameFormaterImpl implements NameFormater {
         handleWhenNameIsNull(name);
         StringBuilder newName = new StringBuilder();
         if (name.length() <= 20) {
-            return stripAccents(name);
+            return stripAccents(name).toUpperCase();
         }
         List<String> splitedName = getSplitedName(name);
         if (splitedName.get(0).length() >= 18) {
             return splitedName.get(0).substring(0, 20);
         }
         String formatedName = "";
-        switch (splitedName.size()) {
-            case 1:
-                formatedName = NameLengthEnum.ONE.getFormatedName(splitedName);
-            case 2:
-                formatedName = NameLengthEnum.TWO.getFormatedName(splitedName);
-            default:
-                formatedName = NameLengthEnum.MORE_THAN_TWO.getFormatedName(splitedName);
+        if (name.length() > 20) {
+            switch (splitedName.size()) {
+                case 1:
+                    formatedName = NameLengthEnum.ONE.getFormatedName(splitedName);
+                    break;
+                case 2:
+                    formatedName = NameLengthEnum.TWO.getFormatedName(splitedName);
+                    break;
+                default:
+                    formatedName = NameLengthEnum.MORE_THAN_TWO.getFormatedName(splitedName);
+                    break;
+            }
         }
         if (formatedName.toString().length() > 20) {
             List<String> names = getSplitedName(formatedName);
@@ -49,7 +54,7 @@ public class NameFormaterImpl implements NameFormater {
 
             });
 
-            formatName(newName.toString());
+            return formatName(newName.toString());
         }
         return newName.toString().equals("") ? formatedName : newName.toString();
     }
