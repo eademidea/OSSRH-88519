@@ -8,61 +8,76 @@ import static org.apache.commons.lang3.StringUtils.stripAccents;
 
 public class NameFormaterImpl implements NameFormater {
 
+    public static final int INT = 20;
+
     /**
      * Devolve nome formatado por exemplo:
      * <p>
-     * "Ricardo Alves Siqueira Neto" passa ser "Ricardo A S Neto"
+     * "Ricardo Alves Siqueira Neto" passa ser "RICARDO A NETO"
      */
     @Override
     public String formatName(String name) {
         handleWhenNameIsNull(name);
         StringBuilder newName = new StringBuilder();
-        if (name.length() <= 20) {
+        if (isLengthNameLessOrEqualMaxLength(name)) {
             return stripAccents(name).toUpperCase();
         }
         List<String> splitedName = getSplitedName(name);
-        if (splitedName.get(0).length() >= 18) {
-            return splitedName.get(0).substring(0, 20);
+        if (isFirstNameLengthLessThanMaxLengthMinusTwo(splitedName)) {
+            return splitedName.get(0).substring(0, INT);
         }
-        String formatedName = "";
-        if (name.length() > 20) {
-            switch (splitedName.size()) {
-                case 1:
-                    formatedName = NameLengthEnum.ONE.getFormatedName(splitedName);
-                    break;
-                case 2:
-                    formatedName = NameLengthEnum.TWO.getFormatedName(splitedName);
-                    break;
-                default:
-                    formatedName = NameLengthEnum.MORE_THAN_TWO.getFormatedName(splitedName);
-                    break;
-            }
-        }
-        if (formatedName.toString().length() > 20) {
+        String formatedName = getFormatedName(name, splitedName);
+        if (isFormatedNameLengthGreaterThanMaxLength(formatedName)) {
             List<String> names = getSplitedName(formatedName);
-
-            names.forEach(na -> {
-
-                if (na.equals(names.get(1))) {
-                } else if (na.equals(names.get(0))) {
-                    newName.append(na);
-                } else if (na.equals(names.size() - 1)) {
-                    newName.append(na);
-                } else {
-                    newName.append(" " + na);
-                }
-
-            });
-
+            fillNewName(newName, names);
             return formatName(newName.toString());
         }
         return newName.toString().equals("") ? formatedName : newName.toString();
+    }
+
+    private static String getFormatedName(String name, List<String> splitedName) {
+        if (name.length() > INT) {
+            switch (splitedName.size()) {
+                case 1:
+                    return NameLengthEnum.ONE.getFormatedName(splitedName);
+                case 2:
+                    return NameLengthEnum.TWO.getFormatedName(splitedName);
+                default:
+                    return NameLengthEnum.MORE_THAN_TWO.getFormatedName(splitedName);
+            }
+        }
+        return null;
+    }
+
+    private static void fillNewName(StringBuilder newName, List<String> names) {
+        names.forEach(name -> {
+            if (name.equals(names.get(1))) {
+            } else if (name.equals(names.get(0))) {
+                newName.append(name);
+            } else if (name.equals(names.size() - 1)) {
+                newName.append(name);
+            } else {
+                newName.append(" " + name);
+            }
+        });
     }
 
     private static void handleWhenNameIsNull(String name) {
         if (isEmpty(name)) {
             throw new RuntimeException("Nome informado é vazio ou nulo.");
         }
+    }
+
+    private static boolean isFormatedNameLengthGreaterThanMaxLength(String formatedName) {
+        return formatedName.length() > INT;
+    }
+
+    private static boolean isFirstNameLengthLessThanMaxLengthMinusTwo(List<String> splitedName) {
+        return splitedName.get(0).length() >= INT - 2;
+    }
+
+    private static boolean isLengthNameLessOrEqualMaxLength(String name) {
+        return name.length() <= INT;
     }
 
 }
