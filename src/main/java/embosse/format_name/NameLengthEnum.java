@@ -1,11 +1,11 @@
 package embosse.format_name;
 
-import embosse.utils.EmbosseUtils;
-
 import java.util.List;
 
-import static embosse.utils.EmbosseUtils.*;
-
+/**
+ * @author Conrado Jardim de Oliveira
+ * @version 0.0.1
+ * */
 public enum NameLengthEnum implements EmbosseNameFormater {
 
     ONE {

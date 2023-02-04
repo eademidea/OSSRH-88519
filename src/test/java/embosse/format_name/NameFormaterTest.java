@@ -5,14 +5,18 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
+/**
+ * @author Conrado Jardim de Oliveira
+ * @version 0.0.1
+ */
 public class NameFormaterTest {
 
-    public static final int INT = 20;
-    private NameFormaterImpl nameFormater;
+    private static final int INT = 20;
+    private NameFormater nameFormater;
 
     @Before
     public void init() {
-        nameFormater = new NameFormaterImpl();
+        nameFormater = new NameFormater();
     }
 
     @Test
