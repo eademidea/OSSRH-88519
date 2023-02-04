@@ -8,6 +8,22 @@
     <groupId>io.github.eademidea</groupId>
     <artifactId>bank-utils</artifactId>
     <version>0.0.1</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <name>Bank Utils</name>
+    <description>Utilitários para criação de software financeiro</description>
+    <url>https://github.com/eademidea/OSSRH-88519</url>
 
     <licenses>
         <license>
@@ -16,6 +32,12 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <scm>
+        <connection>scm:git:git://github.com/eademidea/OSSRH-88519.git</connection>
+        <developerConnection>scm:git:https://github.com/eademidea/OSSRH-88519.git</developerConnection>
+        <url>https://github.com/eademidea/OSSRH-88519</url>
+    </scm>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -41,7 +63,8 @@
         <developer>
             <name>Conrado Jardim de Oliveira</name>
             <email>eademidea@gmail.com</email>
-            <organizationUrl>https://eademidea.blogspot.com/</organizationUrl>
+            <organization>io.github.eademidea</organization>
+            <organizationUrl>https://github.com/eademidea/OSSRH-88519</organizationUrl>
         </developer>
     </developers>
 
