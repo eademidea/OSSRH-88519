@@ -20,3 +20,10 @@ mais funcionalidades.
 Exemplo de entrada e saída da funcionalidade de encurtar nomes:
 
 ![Documento](https://i.postimg.cc/6QTMD0Qj/Screenshot-from-2023-02-04-11-50-44.png)
+
+
+<dependency>
+  <groupId>io.github.eademidea</groupId>
+  <artifactId>bank-utils</artifactId>
+  <version>0.0.1</version>
+</dependency>
