@@ -12,11 +12,6 @@ import static org.apache.commons.lang3.ObjectUtils.isEmpty;
 public class Discount {
 
 
-
-    private BigDecimal valueDiscount   = BigDecimal.ZERO;
-
-    private BigDecimal percentDiscount = BigDecimal.ZERO;
-
     /**
      * Devolve o valor do desconto baseado no valor inicial
      * Exemplo:
@@ -24,13 +19,15 @@ public class Discount {
      * Devolve o valor 10
      */
 
-    public BigDecimal returnValueDiscount(BigDecimal valueInitial,BigDecimal percentDiscount){
+    public BigDecimal getValuePercent(BigDecimal valueInitial,BigDecimal percentDiscount){
 
         handleWhenValueInitialIsNull(valueInitial);
         handleWhenPercentDiscountIsNull(percentDiscount);
+        BigDecimal valueDiscount   = BigDecimal.ZERO;
+
         BigDecimal resultadoinicial = new BigDecimal(String.valueOf(valueDiscount = valueInitial.multiply(percentDiscount)));
         valueDiscount = resultadoinicial.divide(new BigDecimal(100));
-        System.out.println(valueDiscount);
+
         return valueDiscount;
 
     }
@@ -44,22 +41,16 @@ public class Discount {
      * Devolve valor 90
      */
 
-    public BigDecimal returnDiscountedValue(BigDecimal valueInitial,BigDecimal percentDiscount){
+    public BigDecimal getDiscountedValue(BigDecimal valueInitial,BigDecimal percentDiscount){
         handleWhenValueInitialIsNull(valueInitial);
         handleWhenPercentDiscountIsNull(percentDiscount);
-        returnValueDiscount(valueInitial,percentDiscount);
+        BigDecimal valueDiscount = getValuePercent(valueInitial,percentDiscount);
        BigDecimal discountedValue = valueInitial.subtract(valueDiscount);
-        System.out.println(discountedValue);
+
         return discountedValue;
     }
 
-    public BigDecimal getValueDiscount() {
-        return valueDiscount;
-    }
 
-    public BigDecimal getPercentDiscount() {
-        return percentDiscount;
-    }
 /**
  * Verifica se parâmetro recebido é válido
  */

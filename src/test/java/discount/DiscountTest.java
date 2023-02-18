@@ -15,13 +15,13 @@ public class DiscountTest {
     @Test
     public void deveTestarOMetodoReturnValueDiscount() {
 
-        Assert.assertNotNull(new Discount().returnValueDiscount(new BigDecimal(1000),new BigDecimal(10)));
+        Assert.assertNotNull(new Discount().getValuePercent(new BigDecimal(1000),new BigDecimal(10)));
 
     }
 
     @Test
     public void deveTestarOMetodoReturnDiscountedValue(){
-        Assert.assertNotNull(new Discount().returnDiscountedValue(new BigDecimal(1000),new BigDecimal(10)));
+        Assert.assertNotNull(new Discount().getDiscountedValue(new BigDecimal(1000),new BigDecimal(10)));
     }
 
 
