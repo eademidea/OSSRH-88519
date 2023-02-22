@@ -2,6 +2,7 @@ package discount;
 
 import java.math.BigDecimal;
 import java.math.*;
+import java.text.DecimalFormat;
 
 import static org.apache.commons.lang3.ObjectUtils.isEmpty;
 
@@ -27,8 +28,9 @@ public class Discount {
 
         BigDecimal resultadoinicial = new BigDecimal(String.valueOf(valueDiscount = valueInitial.multiply(percentDiscount)));
         valueDiscount = resultadoinicial.divide(new BigDecimal(100));
+        BigDecimal finishValue = new BigDecimal(String.valueOf(valueDiscount.setScale(2, RoundingMode.FLOOR)));
+        return finishValue;
 
-        return valueDiscount;
 
     }
 
@@ -46,8 +48,11 @@ public class Discount {
         handleWhenPercentDiscountIsNull(percentDiscount);
         BigDecimal valueDiscount = getValuePercent(valueInitial,percentDiscount);
        BigDecimal discountedValue = valueInitial.subtract(valueDiscount);
+       BigDecimal value= new BigDecimal(String.valueOf(discountedValue.setScale(2, RoundingMode.FLOOR)));
 
-        return discountedValue;
+        return value;
+
+
     }
 
 
