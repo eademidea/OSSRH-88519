@@ -7,7 +7,7 @@
 
     <groupId>io.github.eademidea</groupId>
     <artifactId>bank-utils</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 
     <name>Bank Utils</name>
     <description>Utilitários para criação de software financeiro</description>
@@ -50,6 +50,12 @@
     <developers>
         <developer>
             <name>Conrado Jardim de Oliveira</name>
+            <email>eademidea@gmail.com</email>
+            <organization>io.github.eademidea</organization>
+            <organizationUrl>https://github.com/eademidea/OSSRH-88519</organizationUrl>
+        </developer>
+        <developer>
+            <name>Erica Francielle da Silva de Oliveira</name>
             <email>eademidea@gmail.com</email>
             <organization>io.github.eademidea</organization>
             <organizationUrl>https://github.com/eademidea/OSSRH-88519</organizationUrl>
