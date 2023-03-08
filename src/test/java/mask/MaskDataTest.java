@@ -1,9 +1,9 @@
 package mask;
-import discount.Discount;
-import org.junit.Assert;
+
 import org.junit.Test;
 
-import java.math.BigDecimal;
+import static mask.DataMask.dataMasking;
+import static org.junit.Assert.assertNotNull;
 
 public class MaskDataTest {
 
@@ -12,7 +12,7 @@ public class MaskDataTest {
      */
     @Test
     public void checkMask(){
-       new DataMask().dataMasking("Erica Martins Olegario");
+       dataMasking("Erica Martins Olegario");
     }
 
     /**
@@ -20,16 +20,10 @@ public class MaskDataTest {
      */
     @Test(expected = RuntimeException.class)
     public void checkStringNull(){
-        new DataMask().dataMasking("");
+        dataMasking("");
     }
 
-    /**
-     * Verifica comportamento padrão do método insertX
-     */
-    @Test
-    public  void checkInsertX(){
-        new DataMask().insertX("Erica Martins Olegario");
-    }
+
 
     /**
      * Espero que o retorno do método dataMasking não seja nulo.
@@ -37,7 +31,7 @@ public class MaskDataTest {
     @Test
     public void checkReturnDataMasking() {
 
-        Assert.assertNotNull(new DataMask().dataMasking("envelope"));
+        assertNotNull(dataMasking("envelope"));
 
     }
 }

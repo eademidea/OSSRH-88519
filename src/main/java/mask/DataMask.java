@@ -1,6 +1,5 @@
 package mask;
 
-import java.lang.String;
 import static org.apache.commons.lang3.ObjectUtils.isEmpty;
 /**
  * @author erica
@@ -13,7 +12,7 @@ public class DataMask {
      * String recebida: Cristina Caldeia
      * String devolvida: CrXXXXXXXXXXXXia
      */
-    public String dataMasking(String data) {
+    public  static String dataMasking(String data) {
 
         handleWhenStringIsNull(data);
       String firstCharacters=data.substring(0,2);
@@ -31,13 +30,13 @@ public class DataMask {
      * Devolve uma string com todos os seus caracteres substituídos por X.
      * Exemplo:
      * STring recebida: Envelope
-     * String devolvida: XXXXXXXX
+     * String devolvida: *******
      */
-    public String insertX(String data) {
+    private static String insertX(String data) {
         String dataMask = "";
         for (int i = 0; i <data.length(); i++) {
 
-            dataMask+= "X";
+            dataMask+= "*";
         }
 
         return dataMask;
