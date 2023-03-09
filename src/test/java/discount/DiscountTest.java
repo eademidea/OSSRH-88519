@@ -18,7 +18,9 @@ public class DiscountTest {
         Assert.assertNotNull(new Discount().getValuePercent(new BigDecimal(1000),new BigDecimal(10)));
 
     }
-
+   /**
+    *Espero que o comportamento do método returnDiscountedValue não seja nulo
+    **/
     @Test
     public void checkReturnDiscountedValue(){
         Assert.assertNotNull(new Discount().getDiscountedValue(new BigDecimal(1000),new BigDecimal(10)));

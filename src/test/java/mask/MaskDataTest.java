@@ -1,5 +1,6 @@
 package mask;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static mask.DataMask.dataMasking;
@@ -8,11 +9,13 @@ import static org.junit.Assert.assertNotNull;
 public class MaskDataTest {
 
     /**
-     * Verifica comportamento padrão do método dataMasking.
+     * Verifica comportamento padrão de mascaramento de dado do método dataMasking.
      */
     @Test
     public void checkMask(){
-       dataMasking("Erica Martins Olegario");
+       String nameMask = "Er**mo";
+
+        Assert.assertTrue(dataMasking("Erasmo").equals(nameMask));;
     }
 
     /**
@@ -25,13 +28,4 @@ public class MaskDataTest {
 
 
 
-    /**
-     * Espero que o retorno do método dataMasking não seja nulo.
-     */
-    @Test
-    public void checkReturnDataMasking() {
-
-        assertNotNull(dataMasking("envelope"));
-
-    }
 }
